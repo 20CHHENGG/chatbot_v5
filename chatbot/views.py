@@ -1,12 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import os
-import dotenv
 import openai
-dotenv_file = os.path.join(".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
-    
 openai.api_key = os.environ['OPENAI_API_KEY']
 # Create your views here.
 
