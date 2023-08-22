@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import os
 import openai
-openai.api_key = os.environ['OPENAI_API_KEY']
+openai.api_key = os.environ.get('OPENAI_API_KEY')
 # Create your views here.
 
 
