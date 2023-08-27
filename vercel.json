@@ -7,11 +7,20 @@
           "maxLambdaSize": "15mb",
           "runtime": "python3.9"
         }
+      },
+      {
+        "src": "build_files.sh",
+        "use": "@vercel/static-build",
+        "config": {
+          "distDir": "staticfiles"
+        }
       }
-    
-      
     ],
     "routes": [
+      {
+        "src": "/static/images.(.*)",
+        "dest": "/static/images/$1"
+      },
       {
         "src": "/(.*)",
         "dest": "django_chatbot/wsgi.py"
