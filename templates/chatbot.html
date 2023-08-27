@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% block styles %}
+{% extends 'base.html' %} 
+{% load static %}
+{% block styles %}
+
 <style>
   body,
   html {
@@ -64,20 +67,19 @@
     display: flex;
     justify-content: end;
   }
+
 </style>
 {% endblock %} 
 {% block content %}
 
 <div class="chat-container">
-  <div
+  <div class="sticky-top"
   style="
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #7ed6df;
-    height: 7vh;
-    position: sticky;
-  "
+    height: 7vh;"
 >
   <h5>
     <a style="text-decoration: none; color: black;margin-left: 8px;" href="{% url 'chatbot' %}"
@@ -90,8 +92,9 @@
       <div class="list-unstyled messages-list">
         <div class="message received">
           <div class="message-text">
-            <div class="message-sender">
-              <b>AI Chatbot</b>
+            <div class="message-sender d-flex align-items-center">
+              <img src="{% static 'images/botpic.svg' %} " >
+              <b>Mr.Chart</b>
             </div>
             <div class="message-content">
               Hi , I am your AI Chatbot, you can ask me
@@ -134,17 +137,21 @@
     const messageItem = document.createElement("div");
     messageItem.classList.add("message", "sent");
     messageItem.innerHTML = `
-        <div class="message-text" id="clientSend">
-            <div class="message-sender">
+    <div class="message-text" >
+     
+          <div class="message-sender d-flex align-items-center" id="clientSend">
+            <img src="{% static 'images/userpic.svg' %} " >
                 <b id="clientSend">You </b>
-                <div class="message-content">
-                ${message}
-            </div>
-            </div>
-        </div>`;
+          </div>
+          <div class="message-content " id="clientSend">
+              ${message}
+          </div>
+          
+        </div>
+        `;
+        
     messagesList.appendChild(messageItem);
     messageInput.value = "";
-    //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
     fetch("{% url 'chatbot' %}", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -162,8 +169,9 @@
         messageItem.classList.add("message", "received");
         messageItem.innerHTML = `
         <div class="message-text">
-            <div class="message-sender">
-              <b>AI Chatbot</b>
+            <div class="message-sender d-flex align-items-center">
+              <img src="{% static 'images/botpic.svg' %} " >
+              <b>Mr.Chart</b>
             </div>
             <div class="message-content">
                 ${response}
