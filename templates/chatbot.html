@@ -1,5 +1,5 @@
 {% extends 'base.html' %} 
-{% load static %}
+
 {% block styles %}
 
 <style>
@@ -93,7 +93,7 @@
         <div class="message received">
           <div class="message-text">
             <div class="message-sender d-flex align-items-center">
-              <img src="{% static 'images/botpic.svg' %} " >
+              <img src="static/images/botpic.svg" >
               <b>Mr.Chart</b>
             </div>
             <div class="message-content">
@@ -140,7 +140,7 @@
     <div class="message-text" >
      
           <div class="message-sender d-flex align-items-center" id="clientSend">
-            <img src="{% static 'images/userpic.svg' %} " >
+            <img src="static/images/userpic.svg" >
                 <b id="clientSend">You </b>
           </div>
           <div class="message-content " id="clientSend">
@@ -170,7 +170,7 @@
         messageItem.innerHTML = `
         <div class="message-text">
             <div class="message-sender d-flex align-items-center">
-              <img src="{% static 'images/botpic.svg' %} " >
+              <img src="static/images/botpic.svg" >
               <b>Mr.Chart</b>
             </div>
             <div class="message-content">
