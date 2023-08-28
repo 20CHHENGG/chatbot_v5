@@ -4,16 +4,19 @@ import os
 import openai
 openai.api_key = os.environ.get('OPENAI_API_KEY')
 # Create your views here.
-MODEL_ID = "gpt-3.5-turbo"
+MODEL_ID = "text-davinci-003"
 
 def askOpenAI(message):
-    response = openai.ChatCompletion.create(
+    response = openai.Completion.create(
         model=MODEL_ID,
-        messages=[{"role":"system","content":message}],
-        temperature=0,
+        prompt=message,
+        max_tokens = 150,
+        n=1,
+        stop=None,
+        temperature=0.7,
     )
     # print(response)
-    answer = response.choices[0].message.content.strip()
+    answer = response.choices[0].text.strip()
     return answer
 
 
