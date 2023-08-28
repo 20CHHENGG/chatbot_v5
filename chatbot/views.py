@@ -10,6 +10,7 @@ def askOpenAI(message):
     response = openai.ChatCompletion.create(
         model=MODEL_ID,
         messages=[{"role":"system","content":message}],
+        temperature=0,
     )
     # print(response)
     answer = response.choices[0].message.content.strip()
