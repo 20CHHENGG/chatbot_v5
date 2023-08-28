@@ -1,6 +1,4 @@
-{% extends 'base.html' %} 
-
-{% block styles %}
+{% extends 'base.html' %} {% block styles %}
 
 <style>
   body,
@@ -67,38 +65,39 @@
     display: flex;
     justify-content: end;
   }
-
 </style>
-{% endblock %} 
-{% block content %}
+{% endblock %} {% block content %}
 
 <div class="chat-container">
-  <div class="sticky-top"
-  style="
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #7ed6df;
-    height: 7vh;"
->
-  <h5>
-    <a style="text-decoration: none; color: black;margin-left: 8px;" href="{% url 'chatbot' %}"
-      >Chat</a
-    >
-  </h5>
-</div>
+  <div
+    class="sticky-top"
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #7ed6df;
+      height: 7vh;
+    "
+  >
+    <h5>
+      <a
+        style="text-decoration: none; color: black; margin-left: 8px"
+        href="{% url 'chatbot' %}"
+        >Chat</a
+      >
+    </h5>
+  </div>
   <div class="card flex-grow-1">
     <div class="card-body messages-box">
       <div class="list-unstyled messages-list">
         <div class="message received">
           <div class="message-text">
-            <div class="message-sender d-flex align-items-center">
-              <img src="static/images/botpic.svg" >
+            <div class="message-sender">
+              
               <b>Mr.Chart</b>
             </div>
             <div class="message-content">
-              Hi , I am your AI Chatbot, you can ask me
-              anything.
+              Hi , I am your AI Chatbot, you can ask me anything.
             </div>
           </div>
         </div>
@@ -117,7 +116,9 @@
         placeholder="Type your message..."
       />
       <div class="input-group-append">
-        <button type="submit" class="btn btn-primary btn-send rounded-sm">Send</button>
+        <button type="submit" class="btn btn-primary btn-send rounded-sm">
+          Send
+        </button>
       </div>
     </div>
   </form>
@@ -139,9 +140,8 @@
     messageItem.innerHTML = `
     <div class="message-text" >
      
-          <div class="message-sender d-flex align-items-center" id="clientSend">
-            <img src="static/images/userpic.svg" >
-                <b id="clientSend">You </b>
+          <div class="message-sender " id="clientSend">
+              <b id="clientSend">You </b>
           </div>
           <div class="message-content " id="clientSend">
               ${message}
@@ -149,7 +149,6 @@
           
         </div>
         `;
-        
     messagesList.appendChild(messageItem);
     messageInput.value = "";
     fetch("{% url 'chatbot' %}", {
@@ -164,13 +163,13 @@
     })
       .then((response) => response.json())
       .then((data) => {
-        const response = data.response;
-        const messageItem = document.createElement("div");
-        messageItem.classList.add("message", "received");
-        messageItem.innerHTML = `
+          const response = data.response;
+          const messageItem = document.createElement("div");
+          messageItem.classList.add("message", "received");
+          messageItem.innerHTML = `
         <div class="message-text">
-            <div class="message-sender d-flex align-items-center">
-              <img src="static/images/botpic.svg" >
+            <div class="message-sender">
+              
               <b>Mr.Chart</b>
             </div>
             <div class="message-content">
@@ -178,7 +177,7 @@
             </div>
         </div>
           `;
-        messagesList.appendChild(messageItem);
+          messagesList.appendChild(messageItem);
       });
   });
 </script>
